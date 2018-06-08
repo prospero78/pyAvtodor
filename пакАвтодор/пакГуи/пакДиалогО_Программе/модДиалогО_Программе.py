@@ -4,7 +4,7 @@
 '''
 
 if True:
-   from tkinter import Toplevel as клсОкно, Button as клсКнопка, Text as клсТекст
+   from tkinter import Toplevel as клсОкно, Button as клсКнопка, Text as клсТекст, Frame as клсРамка
    from пакАвтодор.пакГуи.пакДиалог.модДиалог import клсДиалог
 
 class клсДиалогО_Программе(клсДиалог):
@@ -12,8 +12,10 @@ class клсДиалогО_Программе(клсДиалог):
       сам.__якорь = якорь
       рес = якорь.рес
       клсДиалог.__init__(сам)
-      сам.кнпОк = клсКнопка(сам, text='Ok', command = сам.Скрыть)
-      сам.кнпОк.pack(side='bottom', fill='x')
+      сам.рамка = клсРамка(сам, border=3, relief="groove")
+      сам.рамка.pack(side='bottom', fill='x')
+      сам.кнпОк = клсКнопка(сам.рамка, text='Ok', command = сам.Скрыть)
+      сам.кнпОк.pack(side='right')
       сам.тСодержание = клсТекст(сам)
       сам.тСодержание.insert('1.0', рес.окноО_Программе_текст)
       сам.тСодержание.pack(side='top', fill='both', expand=1)
